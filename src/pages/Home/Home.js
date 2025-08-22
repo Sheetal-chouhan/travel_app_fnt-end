@@ -1,26 +1,42 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Navbar, HotelCard, Categories , SearchStayWithDate} from "../../components";
+import { Navbar, HotelCard, Categories, SearchStayWithDate, Filter } from "../../components";
 import "./Home.css";
-import { useCategory, useDate } from "../../context";
+import { useCategory, useDate, useFilter } from "../../context";
+import {
+    getHotelsByPrice,
+    getHotelsByRoomsAndBeds,
+    getHotelsByPropertyType,
+    getHotelsByRatings,
+    getHotelsByCancelation
+} from "../../utils";
 
 
 export const Home = () => {
 
     const [hasMore, setHasMore] = useState(true);
-    const [currentIndex , setCurrentIndex] = useState(16);
+    const [currentIndex, setCurrentIndex] = useState(16);
     const [testData, setTestData] = useState([]);
     const [hotels, setHotels] = useState([]);
-    const {hotelCategory} = useCategory();
+    const { hotelCategory } = useCategory();
     const { isSearchModalOpen } = useDate();
+    const { isFilterModalOpen, 
+        priceRange,
+        noOfBathrooms,
+        noOfBedrooms,
+        noOfBeds,
+        propertyType,
+        traveloRating,
+        isCancelable,
+    } = useFilter();
 
     useEffect(() => {
         (async () => {
             try {
                 const { data } = await axios.get(
                     `https://travel-app-vm2w.onrender.com/api/hotels?category=${hotelCategory}`
-                    );
+                );
                 setTestData(data);
                 setHotels(data ? data.slice(0, 16) : []);
             } catch (err) {
@@ -42,8 +58,23 @@ export const Home = () => {
             else {
                 setHotels([]);
             }
-        }, 1000)
-    }
+        }, 1000);
+    };
+
+    const filteredHotelsByPrice = getHotelsByPrice(hotels, priceRange);
+    const filteredHotelsBedsAndRooms = getHotelsByRoomsAndBeds(
+        filteredHotelsByPrice,
+        noOfBathrooms,
+        noOfBedrooms,
+        noOfBeds);
+    const filteredHotelsByPropertyType = getHotelsByPropertyType(
+        filteredHotelsBedsAndRooms,
+        propertyType
+    );
+    const filteredHotelsByRating  = getHotelsByRatings( filteredHotelsByPropertyType, traveloRating);
+    const filteredHotelsByCancelation = getHotelsByCancelation(filteredHotelsByRating , isCancelable);
+
+   
     return (
         <div className="relative">
             <Navbar />
@@ -62,13 +93,17 @@ export const Home = () => {
                     >
                         <main className="main d-flex align-center wrap gap-larger">
                             {
-                                hotels && hotels.map((hotel) => (<HotelCard key={hotel._id} hotel={hotel} />
+                                filteredHotelsByCancelation && filteredHotelsByCancelation.map((hotel) => (<HotelCard key={hotel._id} hotel={hotel} />
                                 ))}</main>
                     </InfiniteScroll>
                 ) : (<></>)
             }
             {
                 isSearchModalOpen && <SearchStayWithDate />
+            }
+
+            {
+                isFilterModalOpen && <Filter />
             }
 
         </div>

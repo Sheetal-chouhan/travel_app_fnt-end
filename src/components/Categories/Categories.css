@@ -1,5 +1,5 @@
-.categories{
-    padding: 6rem 2rem 1rem 2rem;
+/* .categories{
+    padding: 6rem 0rem 1rem 0rem;
     color: var(--text-color-primary);
     background-color: var(--background-color);
     position: fixed;
@@ -12,7 +12,7 @@
 }
 
 .gap-large{
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .border-bottom {
@@ -25,14 +25,80 @@
     border: 1px solid var(--accent-color);
     border-radius: 50%;
     color: var(--text-color-primary);
-    height: 24px;
-    width: 24px;
+    height: 1.5rem;
+    width: 1.5rem;
+   
 }
 
 .btn-left {
-    left: 2rem;
+    left: 1rem;
 }
 
 .btn-right {
+    right: 10rem;
+}
+
+.button.btn-filter{
+    top: 5.5rem;
     right: 2rem;
+    padding: 4px 1rem;
+    border-radius: 1rem;
+    border: 1px solid var(--accent-color);
+
+   
+}
+
+.button.btn-filter:hover,
+.btn-category:hover {
+    box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.1);
+    
+}
+
+
+ */
+
+
+
+ .categories {
+    padding: 6rem 2rem 1rem 2rem;
+    color: var(--text-color-primary);
+    background-color: var(--background-color);
+    position: fixed;
+    z-index: 1;
+    width: 100vw;
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    white-space: nowrap;
+
+    /* prevent overlap with filter */
+    padding-right: 9rem; /* enough space for filter button */
+}
+
+.button.btn-category {
+    padding: 0;
+    top: 6rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 50%;
+    color: var(--text-color-primary);
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+/* left arrow */
+.btn-left {
+    left: 1rem;
+}
+
+/* right arrow - keep left of filter */
+.btn-right {
+    right: 8.5rem; /* moves it left so it won't overlap filter */
+}
+
+.button.btn-filter {
+    top: 5.5rem;
+    right: 1rem;
+    padding: 3px 1rem;
+    border-radius: 1rem;
+    border: 1px solid var(--accent-color);
 }
