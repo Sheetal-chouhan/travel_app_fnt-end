@@ -9,9 +9,9 @@ export const Navbar = () => {
 
         dateDispatch({
             type: "OPEN_SEARCH_MODAL"
-        })
+        });
 
-    }
+    };
     return (
         <header className="heading d-flex align-center">
             <h1 className="heading-1">
