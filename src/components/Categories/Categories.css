@@ -75,6 +75,9 @@
     padding-right: 9rem; /* enough space for filter button */
 }
 
+.border-bottom {
+    border-bottom: 1px solid var(--text-color-primary) ;
+}
 .button.btn-category {
     padding: 0;
     top: 6rem;
