@@ -1,4 +1,4 @@
-export { Navbar} from "./Navbar/Navbar";
+export { Navbar } from "./Navbar/Navbar";
 export { HotelCard } from "./HotelCard/HotelCard";
 export { Categories } from "./Categories/Categories";
 export { HotelImages } from "./HotelImages/HotelImages";
@@ -6,7 +6,10 @@ export { HotelDetails } from "./HotelDetails/HotelDetails";
 export { FinalPrice } from "./FinalPrice/FinalPrice";
 export { DateSelector } from "./DateSelector/DateSelector";
 export { SearchStayWithDate } from "./SearchStayWithDate/SearchStayWithDate";
-export { Filter} from "./Filter/Filter";
+export {Filter } from "./Filter/Filter";
 export { AuthLogin } from "./Auth/AuthLogin";
 export { AuthSignup } from "./Auth/AuthSignup";
-export { AuthModal} from "./AuthModal/AuthModal";
+export { AuthModal } from "./AuthModal/AuthModal";
+export { ProfileDropDown } from "./ProfileDropDown/ProfileDropDown";
+export { OrderSummaryComp} from  "./OrderSummaryComp/OrderSummaryComp";
+export { Alert } from "./Alert/Alert";
