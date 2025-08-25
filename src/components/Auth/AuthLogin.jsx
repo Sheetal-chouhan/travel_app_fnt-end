@@ -1,46 +1,3 @@
-// import "./Auth.css";
-
-// export const AuthLogin = () => {
-//     return (
-//         <div className="auth-container">
-//             <form>
-//                 <div className="d-flex direction-column lb-in-container">
-//                     <label
-//                         className="auth-label">Mobile Number<span className="asterisk">*</span>{" "}
-//                     </label>
-//                     <input
-//                         type="number"
-//                         className="auth-input"
-//                         maxLength="10"
-//                         placeholder="Enter Mobile number"
-//                         required />
-//                 </div>
-
-//                 <div className="d-flex direction-column lb-in-container">
-//                     <label
-//                         className="auth-label">Password<span className="asterisk">*</span>{" "}
-//                     </label>
-//                     <input
-//                         className="auth-input"
-//                         placeholder="Enter Password"
-//                         type="password"
-//                         required />
-//                 </div>
-
-//                 <div>
-//                     <button className="button btn-primary btn-login cursor">Login</button>
-//                 </div>
-//             </form>
-
-//             <div className="cta">
-//                 <button className="button btn-outline-primary cursor-pointer">Login with Test Credentials</button>
-//             </div>
-//         </div>
-//     );
-// };
-
-
-
 import "./Auth.css";
 import { validateNumber, validatePassword } from "../../utils";
 import { loginHandler } from "../../services";
@@ -50,7 +7,7 @@ let isNumberValid, isPasswordValid;
 
 export const AuthLogin = () => {
   const { authDispatch, number, password } = useAuth();
-//   const { setAlert } = useAlert();
+
   const handleNumberChange = (event) => {
     isNumberValid = validateNumber(event.target.value);
     if (isNumberValid) {
@@ -77,10 +34,10 @@ export const AuthLogin = () => {
     }
   };
 
-  const handleFormSubmit = async (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
     if (isNumberValid && isPasswordValid) {
-      const { accessToken, username } = await loginHandler(number, password);
+      const { accessToken, username } = loginHandler(number, password);
       authDispatch({
         type: "SET_ACCESS_TOKEN",
         payload: accessToken,
@@ -89,8 +46,6 @@ export const AuthLogin = () => {
         type: "SET_USER_NAME",
         payload: username,
       });
-      
-
     }
     authDispatch({
       type: "CLEAR_USER_DATA",
@@ -103,8 +58,7 @@ export const AuthLogin = () => {
   const handleTestCredentialsClick = async () => {
     const { accessToken, username } = await loginHandler(
       7878787878,
-      "Abcd@1234",
-    //   setAlert
+      "Abcd@1234"
     );
     authDispatch({
       type: "SET_ACCESS_TOKEN",

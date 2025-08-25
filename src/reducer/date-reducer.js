@@ -1,51 +1,56 @@
-export const dateReducer = (state, {type, payload}) => { 
-    switch(type) {
-        case "OPEN_SEARCH_MODAL":
+export const dateReducer = (state, { type, payload }) => {
+    switch (type) {
+      case "OPEN_SEARCH_MODAL":
         return {
-            ...state,
-            isSearchModalOpen : !state.isSearchModalOpen,
+          ...state,
+          isSearchModalOpen: !state.isSearchModalOpen,
         };
-
-    case "CHECK_IN":
+  
+      case "CHECK_IN":
         return {
-            ...state,
-            checkInDate : payload,
+          ...state,
+          checkInDate: payload,
         };
-    case "CHECK_OUT":
+      case "CHECK_OUT":
         return {
-            ...state,
-            checkOutDate : payload,
+          ...state,
+          checkOutDate: payload,
         };
-    case "DESTINATION":
+      case "DESTINATION":
         return {
-            ...state,
-            destination : payload,
-        };    
-    case "GUESTS":
+          ...state,
+          destination: payload,
+        };
+      case "GUESTS":
         return {
-            ...state,
-            guests : payload,
-        }; 
-    case "DATE_FOCUS":
+          ...state,
+          guests: payload,
+        };
+      case "DATE_FOCUS":
         return {
-            ...state,
-            isSearchResultOpen : false,
-        }; 
-    case "SHOW_SEARCH_RESULT":
+          ...state,
+          isSearchResultOpen: false,
+        };
+      case "SHOW_SEARCH_RESULT":
         return {
-            ...state,
-            isSearchResultOpen : true,
-        }; 
-    case "CLOSE_SEARCH_MODAL":
+          ...state,
+          isSearchResultOpen: true,
+        };
+      case "CLOSE_SEARCH_MODAL":
         return {
-            ...state,
-           isSearchModalOpen : !state.isSearchModalOpen,
-        };             
-        default : 
+          ...state,
+          isSearchModalOpen: !state.isSearchModalOpen,
+        };
+      case "CLEAR_INPUTS":
+        return {
+          ...state,
+          checkInDate: null,
+          checkOutDate: null,
+          guests: 0
+        }
+      default:
         return state;
-
     }
-
-}
+  };
 
 

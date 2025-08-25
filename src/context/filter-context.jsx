@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
-import { filterReduce } from "../reducer";
+import { filterReducer } from "../reducer";
 
 
 const initalValue = {
@@ -26,7 +26,7 @@ const FilterProvider = ({children}) =>{
         propertyType  ,
         traveloRating,
         isCancelable,
-     }, filterDispatch] = useReducer(filterReduce, initalValue);
+     }, filterDispatch] = useReducer(filterReducer, initalValue);
 
     return (
         <FilterContext.Provider value={{isFilterModalOpen ,  

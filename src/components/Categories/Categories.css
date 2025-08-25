@@ -60,45 +60,62 @@
 
 
  .categories {
-    padding: 6rem 2rem 1rem 2rem;
+    padding: 6rem 3rem 1rem 5rem;
     color: var(--text-color-primary);
     background-color: var(--background-color);
     position: fixed;
     z-index: 1;
     width: 100vw;
-    display: flex;
+  }
+  
+  .gap-large {
+    gap: 2rem;
+  }
+  
+  .rec.rec-swipable{
     gap: 1.5rem;
-    overflow-x: auto;
-    white-space: nowrap;
-
-    /* prevent overlap with filter */
-    padding-right: 9rem; /* enough space for filter button */
-}
-
-.button.btn-category {
-    padding: 0;
-    top: 6rem;
+  }
+  
+  .rec.rec-item-wrapper {
+    width: max-content !important;
+  }
+  
+  .category-color {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+  }
+  
+  .item {
+    cursor: pointer;
+    font-size: .875rem;
+    padding: 8px 10px;
+    border-radius: 2rem;
+  }
+  
+  .border-bottom {
+    border-bottom: 1px solid var(--text-color-primary);
+  }
+  
+  .button.btn-filter {
+    padding: 8px 1rem;
+    border-radius: 2rem;
     border: 1px solid var(--accent-color);
-    border-radius: 50%;
-    color: var(--text-color-primary);
-    height: 1.5rem;
+    align-self: flex-start;
+  }
+  
+  .btn-filter:hover,
+  .btn-category:hover {
+    box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .rec.rec-arrow:disabled {
+    visibility: hidden;
+  }
+  
+  .rec.rec-arrow {
     width: 1.5rem;
-}
-
-/* left arrow */
-.btn-left {
-    left: 1rem;
-}
-
-/* right arrow - keep left of filter */
-.btn-right {
-    right: 8.5rem; /* moves it left so it won't overlap filter */
-}
-
-.button.btn-filter {
-    top: 5.5rem;
-    right: 1rem;
-    padding: 3px 1rem;
-    border-radius: 1rem;
-    border: 1px solid var(--accent-color);
-}
+    height: 1.5rem;
+    min-width: 1.5rem;
+    line-height: 1.5rem;
+    font-size: 1rem;
+  }
