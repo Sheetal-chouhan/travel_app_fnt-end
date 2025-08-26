@@ -61,9 +61,15 @@ export const SearchStayWithDate = () => {
         dateDispatch({
             type: "SHOW_SEARCH_RESULT",
             payload: event.target.value,
-        });
+        });   
     }
 
+    const handleSearchCloseClick = () => {
+    dateDispatch({
+      type: "CLOSE_SEARCH_MODAL"
+    });
+
+}
     const destionationOptions = hotels.filter(({ address, city, state, country }) =>
         address.toLowerCase().includes(destination.toLowerCase()) ||
         city.toLowerCase().includes(destination.toLowerCase()) ||
@@ -112,6 +118,9 @@ export const SearchStayWithDate = () => {
                     <span>search</span>
 
                 </div>
+                <button className="button absolute close-search-dest"><span onClick={handleSearchCloseClick} className="highlight material-icons-outlined">
+          highlight_off
+        </span></button>
             </div>
 
             {
