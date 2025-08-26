@@ -24,11 +24,38 @@
 // };
 
 
+// import axios from "axios";
+
+// export const signupHandler = async (username, number, email, password, setAlert) => {
+//   try {
+//     const data = await axios.post(
+//       "https://travel-app-1-buan.onrender.com/api/auth/register",
+//       {
+//         username: username,
+//         number: number,
+//         email: email,
+//         password: password,
+//       }
+//     );
+//     console.log("Signed Up");
+//     console.log(data);
+//     setAlert({
+//       open: true,
+//       message: `Account Created:: username - ${username}`,
+//       type: "success"
+//     })
+//   } catch (err) {
+//     console.log("error adding user to database");
+//   }
+// };
+
+
+
 import axios from "axios";
 
 export const signupHandler = async (username, number, email, password, setAlert) => {
   try {
-    const data = await axios.post(
+    const responce = await axios.post(
       "https://travel-app-1-buan.onrender.com/api/auth/register",
       {
         username: username,
@@ -38,12 +65,13 @@ export const signupHandler = async (username, number, email, password, setAlert)
       }
     );
     console.log("Signed Up");
-    console.log(data);
+    console.log(responce);
     setAlert({
       open: true,
       message: `Account Created:: username - ${username}`,
       type: "success"
     })
+    return{};
   } catch (err) {
     console.log("error adding user to database");
   }
